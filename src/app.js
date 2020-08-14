@@ -58,20 +58,28 @@ app.get('/weather', (req, res) => {
 
     }
 
+    debugger
+
     mapbox.geocode(req.query.Address, (error, {latitude, longitude, place_name} = {}) => {
 
         if(error != undefined){
              return res.send ({error})
         }
-                         
-            forecast(latitude, longitude, place_name, (error, data) => {
+                      
+            
+            forecast(latitude, longitude, place_name,(error, data) => {
                 if(error != undefined){
+                    
                     return res.send ({error}) 
                }
+               
                 res.send ({
-                    forecast:data,
+                    forecast:data.forecast,
                     place_name,
-                    address: req.query.Address
+                    address: req.query.Address,
+                    hourlyTime: data.hourlyTime,
+                    hourlyTemp: data.hourlyTemp,
+                    hourlyRain: data.hourlyRain
 
                 }) 
                           
