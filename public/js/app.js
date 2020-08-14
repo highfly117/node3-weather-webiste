@@ -43,7 +43,7 @@ weatherForm.addEventListener('submit', (e) => {
 
                 var rainchance = (data.hourlyRain[i-1])*100
 
-                document.getElementById("Rain"+i).textContent = rainchance.toFixed(2)
+                document.getElementById("Rain"+i).textContent = rainchance.toFixed(0) + '%'
             }
             
             
