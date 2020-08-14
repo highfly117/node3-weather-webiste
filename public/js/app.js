@@ -39,8 +39,11 @@ weatherForm.addEventListener('submit', (e) => {
             for(i=1; i<13; i++){
 
                 document.getElementById("time"+i).textContent = data.hourlyTime[i-1]
-                document.getElementById("Temp"+i).textContent = data.hourlyTemp[i-1]
-                document.getElementById("Rain"+i).textContent = data.hourlyRain[i-1]
+                document.getElementById("Temp"+i).textContent = data.hourlyTemp[i-1] + '°'
+
+                var rainchance = (data.hourlyRain[i-1])*100
+
+                document.getElementById("Rain"+i).textContent = rainchance.toFixed(2)
             }
             
             
